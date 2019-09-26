@@ -6,6 +6,8 @@ method Game(n: nat) returns (score: nat)
     score := 0;
 
     while |stacks| > 0
+    //TODO: add invariant
+    //TODO: add termination (decreases) 
     {
         var i :| 0 <= i < |stacks|;
         if stacks[i] == 1 {
