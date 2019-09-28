@@ -20,9 +20,3 @@ method Find(a: array<nat>) returns (index: int)
 
     return -1;
 }
-
-lemma correctness(a: array<nat>)
-
-{
-    
-}
