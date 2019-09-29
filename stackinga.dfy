@@ -9,7 +9,7 @@ method Game(n: nat) returns (score: nat)
         // invariant for LHS error in else part of loop
         invariant forall i :: 0 <= i < |stacks| ==> 1 <= stacks[i] <= n
         // score invariant
-        invariant forall i,j,k :: 1 < i <= n && 1 < i == j+k && j > 0 && k > 0 ==> scoreCalc(j) + scoreCalc(k) + (j*k) == scoreCalc(i)
+        invariant score == (n * (n - 1) / 2) - scoreCalcSum(stacks)
     {
         var i :| 0 <= i < |stacks|;
         if stacks[i] == 1 {
@@ -25,7 +25,13 @@ method Game(n: nat) returns (score: nat)
     return;
 }
 
-function scoreCalc(n: nat): nat
+function scoreCalcSum(stacks: seq<nat>): nat
 {
-    n * (n - 1) / 2
+    var i := 0;
+    var sum := 0;
+    while i < |stacks|
+    {   
+        sum := sum + (stacks[i] * (stacks[i] - 1) / 2);
+        i := i + 1;
+    }
 }
