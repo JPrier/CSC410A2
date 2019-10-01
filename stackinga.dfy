@@ -27,6 +27,7 @@ method Game(n: nat) returns (score: nat)
 
 function scoreCalcSum(stacks: seq<nat>): nat
     requires forall i :: 0 <= i < |stacks| ==> 1 <= stacks[i]
+    decreases |stacks|
 {   
     if |stacks| == 0 then 0
     else scoreCalcSum(stacks[1..]) + (stacks[0] * (stacks[0] - 1) / 2)
